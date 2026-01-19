@@ -55,14 +55,54 @@
             transform: rotateY(0deg) rotateX(0deg);
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
         }
+
+        @keyframes scrollFloat {
+            0%, 100% {
+                opacity: 0.6;
+                transform: translateY(0px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(8px);
+            }
+        }
+
+        .scroll-indicator {
+            animation: scrollFloat 2.5s ease-in-out infinite;
+        }
     </style>
 </head>
 
 <body class="bg-off-white text-gray-900 font-sans pb-20">
     <!-- Navbar -->
+    <nav class="absolute top-0 left-0 right-0 z-40 px-6 py-4">
+        <div class="max-w-6xl mx-auto backdrop-blur-md bg-white/30 border border-white/40 rounded-2xl px-8 py-4 flex items-center justify-between">
+            <!-- Left: Home Link -->
+            <a href="#" class="text-sm font-medium text-gray-700 hover:text-black transition-colors">
+                Home
+            </a>
+
+            <!-- Center: Logo -->
+            <span class="text-2xl font-bold text-black font-sans">
+                mohitrajrathor
+            </span>
+
+            <!-- Right: Social Links -->
+            <div class="flex space-x-4">
+                <a href="https://github.com/mohitrajrathor" target="_blank"
+                    class="text-gray-600 hover:text-black text-lg transition-colors">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/mohitrajrathor" target="_blank"
+                    class="text-gray-600 hover:text-black text-lg transition-colors">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-[80vh] flex items-center px-6">
+    <section class="h-screen flex items-center px-6">
         <div class="max-w-6xl mx-auto w-full md:flex md:items-center md:justify-between">
             <div class="md:w-2/3 text-center md:text-left">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">
@@ -79,10 +119,24 @@
                 </a>
             </div>
             <div class="hidden md:block md:w-1/3 ml-8 h-full">
-                <div class="h-full rounded-lg overflow-hidden border border-gray-200">
-                    <img src="assets/images/profile.jpeg" alt="Mohit Raj Rathor" class="object-cover w-full h-full" />
+                <div class="w-full aspect-square rounded-full overflow-hidden border border-gray-200">
+                    <img src="assets/images/profile_sq.jpg" alt="Mohit Raj Rathor" class="object-cover w-full h-full" />
                 </div>
             </div>
+        </div>
+
+        <!-- Animated Down Arrow -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+            <p class="text-gray-600 text-sm font-medium mb-4">There is more to explore</p>
+            <a href="#about" class="scroll-indicator">
+                <svg width="40" height="40" viewBox="0 0 40 40" class="drop-shadow-sm">
+                    <!-- Left half (black) -->
+                    <polygon points="0,2 20,2 20,38" fill="black" />
+                    
+                    <!-- Right half (medium gray) -->
+                    <polygon points="20,2 40,2 20,38" fill="#9ca3af" />
+                </svg>
+            </a>
         </div>
     </section>
 
